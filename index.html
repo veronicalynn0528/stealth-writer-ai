@@ -7,98 +7,107 @@
     <meta name="description" content="Free AI humanizer that transforms AI-generated text into natural, human-like content. Bypass AI detectors in seconds. No signup required.">
     <link rel="canonical" href="https://stealth-writer-ai.pages.dev/">
     
-    <!-- Open Graph -->
     <meta property="og:title" content="Stealth Writer AI - Humanize AI Content Instantly">
     <meta property="og:description" content="Free AI humanizer. Transform robotic text into natural content in seconds.">
     <meta property="og:type" content="website">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-primary: #1a1a2e;
-            --bg-secondary: #16213e;
-            --accent: #00d4aa;
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --border: #2a2a4a;
-            --card-bg: #0f0f23;
-            --error: #ff4757;
-            --success: #00d4aa;
+            --paper: #f5f2e8;
+            --paper-dark: #e8e4d9;
+            --ink: #1a1a1a;
+            --ink-light: #5c5c5c;
+            --border: #1a1a1a;
+            --white: #ffffff;
+            --error: #c41e3a;
+            --success: #2d5016;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.8;
+            font-size: 18px;
         }
         
-        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+        
+        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.8rem; margin: 3rem 0 1.5rem; }
+        h3 { font-size: 1.3rem; margin: 2rem 0 1rem; }
+        
+        p { margin-bottom: 1.2rem; }
+        
+        /* Layout */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
         
         /* Nav */
         nav {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        nav .container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            align-items: baseline;
         }
         
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Courier Prime', monospace;
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--accent);
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
         }
         
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--ink-light);
             text-decoration: none;
             margin-left: 2rem;
-            transition: color 0.3s;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
         
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover { color: var(--ink); }
         
         /* Hero */
         .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 2rem 0 4rem;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 3.2rem;
+            letter-spacing: -0.02em;
         }
         
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--ink-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
         }
         
         /* Input Area */
         .input-area {
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-            border-radius: 16px;
+            background: var(--white);
+            border: 1px solid var(--border);
             padding: 2rem;
             margin: 2rem 0;
         }
@@ -108,112 +117,109 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
-        }
-        
-        .word-count {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
+            color: var(--ink-light);
         }
         
         textarea {
             width: 100%;
             min-height: 200px;
-            background: var(--bg-secondary);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 8px;
             padding: 1rem;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            font-family: 'Georgia', serif;
             font-size: 1rem;
+            line-height: 1.8;
             resize: vertical;
-            transition: border-color 0.3s;
+            transition: border-color 0.2s;
         }
         
         textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--ink-light);
+        }
+        
+        textarea::placeholder {
+            color: var(--ink-light);
+            font-style: italic;
         }
         
         .button-group {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            margin-top: 1.5rem;
         }
         
         .btn-primary {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            background: var(--ink);
+            color: var(--paper);
+            border: 1px solid var(--ink);
+            padding: 0.8rem 2rem;
+            border-radius: 2px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: all 0.2s;
         }
         
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 212, 170, 0.4);
+            background: var(--ink-light);
+            border-color: var(--ink-light);
         }
         
         .btn-primary:disabled {
-            opacity: 0.6;
+            opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
         
         .btn-secondary {
             background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
+            color: var(--ink);
+            border: 1px solid var(--border);
+            padding: 0.8rem 2rem;
+            border-radius: 2px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         
         .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
+            background: var(--paper-dark);
         }
         
-        /* Loading State */
+        /* Loading */
         .loading {
             display: none;
-            text-align: center;
-            padding: 2rem;
+            padding: 2rem 0;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            color: var(--ink-light);
         }
         
         .loading.active { display: block; }
         
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
+        .loading::after {
+            content: "...";
+            animation: dots 1.5s steps(4, end) infinite;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @keyframes dots {
+            0%, 20% { content: ""; }
+            40% { content: "."; }
+            60% { content: ".."; }
+            80%, 100% { content: "..."; }
         }
         
-        /* Result Area */
+        /* Result */
         .result-area {
             display: none;
             margin-top: 2rem;
             padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-radius: 8px;
+            background: var(--paper-dark);
             border: 1px solid var(--border);
         }
         
@@ -224,51 +230,35 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
         }
         
         .ai-score {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
+            color: var(--ink-light);
         }
         
         .score-badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            margin-left: 0.5rem;
+            font-weight: 700;
         }
         
-        .score-low { background: rgba(0, 212, 170, 0.2); color: var(--success); }
-        .score-high { background: rgba(255, 71, 87, 0.2); color: var(--error); }
+        .score-low { background: var(--success); color: var(--paper); }
+        .score-high { background: var(--error); color: var(--paper); }
         
         .result-text {
-            background: var(--card-bg);
+            background: var(--white);
             padding: 1rem;
-            border-radius: 8px;
+            border: 1px solid var(--border);
             min-height: 100px;
             white-space: pre-wrap;
-        }
-        
-        /* Social Proof */
-        .social-proof {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
+            line-height: 1.8;
         }
         
         /* Sections */
         section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
+            padding: 2rem 0;
         }
         
         /* Problem/Solution */
@@ -280,150 +270,129 @@
         }
         
         .card {
-            background: var(--card-bg);
+            background: var(--white);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
         }
         
         .card h3 {
-            color: var(--accent);
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 1rem;
         }
         
-        /* How It Works */
+        /* Steps */
         .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
             margin: 2rem 0;
         }
         
         .step {
-            text-align: center;
-            padding: 2rem;
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
         }
         
         .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 2rem;
             font-weight: 700;
-            margin: 0 auto 1rem;
-            font-family: 'Space Grotesk', sans-serif;
+            color: var(--ink-light);
+            min-width: 3rem;
+        }
+        
+        .step h3 {
+            margin: 0 0 0.5rem;
         }
         
         /* Features */
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
             margin: 2rem 0;
         }
         
         .feature {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        
-        .feature:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
         }
         
         .feature h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         /* Pricing */
         .pricing {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
             margin: 2rem 0;
-            align-items: start;
         }
         
         .pricing-card {
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-            border-radius: 16px;
+            background: var(--white);
+            border: 1px solid var(--border);
             padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-4px);
+            margin-bottom: 1.5rem;
         }
         
         .pricing-card.featured {
-            border-color: var(--accent);
-            transform: scale(1.05);
+            border-width: 2px;
         }
         
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-4px);
+        .pricing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-header h3 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 0;
         }
         
         .price {
-            font-size: 3rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--accent);
-            font-family: 'Space Grotesk', sans-serif;
         }
         
         .price-period {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--ink-light);
         }
         
         .pricing-card ul {
             list-style: none;
-            text-align: left;
             margin: 1.5rem 0;
         }
         
         .pricing-card li {
             padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--paper-dark);
+            font-size: 0.95rem;
         }
         
         .pricing-card li:before {
-            content: "✓ ";
-            color: var(--accent);
-            font-weight: bold;
+            content: "— ";
+            color: var(--ink-light);
         }
         
         /* FAQ */
         .faq-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin: 1rem 0;
-            overflow: hidden;
+            border-bottom: 1px solid var(--border);
         }
         
         .faq-question {
-            padding: 1.5rem;
+            padding: 1.5rem 0;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-        
-        .faq-question:hover {
-            background: var(--bg-secondary);
+            align-items: baseline;
         }
         
         .faq-question h3 {
@@ -432,8 +401,10 @@
         }
         
         .faq-icon {
-            transition: transform 0.3s;
-            color: var(--accent);
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            transition: transform 0.2s;
         }
         
         .faq-item.active .faq-icon {
@@ -441,362 +412,329 @@
         }
         
         .faq-answer {
-            padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s, padding 0.3s;
         }
         
         .faq-item.active .faq-answer {
-            padding: 0 1.5rem 1.5rem;
+            padding-bottom: 1.5rem;
             max-height: 500px;
         }
         
         /* Footer */
         footer {
-            text-align: center;
-            padding: 2rem;
             border-top: 1px solid var(--border);
-            color: var(--text-secondary);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
         }
         
         footer a {
-            color: var(--accent);
+            color: var(--ink);
             text-decoration: none;
             margin: 0 1rem;
-            transition: opacity 0.3s;
+            font-size: 0.9rem;
         }
         
         footer a:hover {
-            opacity: 0.8;
+            text-decoration: underline;
         }
         
-        /* Error State */
+        footer p {
+            color: var(--ink-light);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+        
+        /* Error */
         .error-message {
             display: none;
-            background: rgba(255, 71, 87, 0.1);
+            background: var(--paper-dark);
             border: 1px solid var(--error);
             color: var(--error);
             padding: 1rem;
-            border-radius: 8px;
             margin-top: 1rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
         }
         
         .error-message.active { display: block; }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            
-            .problem-solution,
-            .steps,
-            .pricing {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.featured {
-                transform: none;
-            }
-            
-            .pricing-card.featured:hover {
-                transform: translateY(-4px);
-            }
-            
+            h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .problem-solution { grid-template-columns: 1fr; }
+            .button-group { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; }
             .nav-links { display: none; }
-            
-            .button-group {
-                flex-direction: column;
-            }
-            
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-in {
-            animation: fadeIn 0.6s ease-out;
+            body { font-size: 16px; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo">Stealth Writer AI</div>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
+        <div class="container">
+            <div class="logo">STEALTH WRITER</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
         </div>
     </nav>
     
     <section class="hero">
-        <h1>Make AI Content Sound Human</h1>
-        <p>The fastest AI humanizer. Transform robotic text into natural, engaging content in seconds. No signup, no credit card.</p>
-        
-        <div class="input-area">
-            <div class="input-header">
-                <span class="word-count">0 / 500 words</span>
-                <span>Free tier: 500 words per use</span>
-            </div>
-            <textarea id="inputText" placeholder="Paste your AI-generated text here..."></textarea>
-            <div class="button-group">
-                <button class="btn-primary" id="humanizeBtn" onclick="humanizeText()">
-                    <span>⚡</span> Humanize Now
-                </button>
-                <button class="btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
-                    See Pricing
-                </button>
-            </div>
+        <div class="container">
+            <h1>Make AI Content Sound Human</h1>
+            <p class="hero-subtitle">The fastest AI humanizer. Transform robotic text into natural, engaging content in seconds. No signup, no credit card.</p>
             
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <p>Humanizing your content...</p>
-            </div>
-            
-            <div class="error-message" id="errorMessage"></div>
-            
-            <div class="result-area" id="resultArea">
-                <div class="result-header">
-                    <div class="ai-score">
-                        <span>AI Detection Score:</span>
-                        <span class="score-badge" id="scoreBadge">--</span>
-                    </div>
-                    <button class="btn-secondary" onclick="copyResult()">📋 Copy</button>
+            <div class="input-area">
+                <div class="input-header">
+                    <span id="wordCount">0 / 500 words</span>
+                    <span>Free tier: 500 words per use</span>
                 </div>
-                <div class="result-text" id="resultText"></div>
+                <textarea id="inputText" placeholder="Paste your AI-generated text here..."></textarea>
+                <div class="button-group">
+                    <button class="btn-primary" id="humanizeBtn" onclick="humanizeText()">Humanize Now</button>
+                    <button class="btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">See Pricing</button>
+                </div>
+                
+                <div class="loading" id="loading">Humanizing your content</div>
+                <div class="error-message" id="errorMessage"></div>
+                
+                <div class="result-area" id="resultArea">
+                    <div class="result-header">
+                        <div class="ai-score">AI Detection Score: <span class="score-badge" id="scoreBadge">--</span></div>
+                        <button class="btn-secondary" onclick="copyResult()">Copy</button>
+                    </div>
+                    <div class="result-text" id="resultText"></div>
+                </div>
             </div>
         </div>
     </section>
     
-    <div class="social-proof">
-        Used by 10,000+ content creators, students, and marketers
-    </div>
-    
     <section id="problem">
-        <h2>Tired of AI Detection Flags?</h2>
-        <div class="problem-solution">
-            <div class="card">
-                <h3>Before</h3>
-                <p>❌ Your carefully crafted content flagged as "AI-generated"</p>
-                <p>❌ Hours spent manually rewriting to sound natural</p>
-                <p>❌ Expensive tools that slow you down</p>
-            </div>
-            <div class="card">
-                <h3>After</h3>
-                <p>✅ Content that reads naturally and bypasses detectors</p>
-                <p>✅ 3-second transformation, not 30+ seconds</p>
-                <p>✅ Generous free tier, no credit card needed</p>
+        <div class="container">
+            <h2>Tired of AI Detection Flags?</h2>
+            <div class="problem-solution">
+                <div class="card">
+                    <h3>Before</h3>
+                    <p>Your carefully crafted content flagged as "AI-generated"</p>
+                    <p>Hours spent manually rewriting to sound natural</p>
+                    <p>Expensive tools that slow you down</p>
+                </div>
+                <div class="card">
+                    <h3>After</h3>
+                    <p>Content that reads naturally and bypasses detectors</p>
+                    <p>3-second transformation, not 30+ seconds</p>
+                    <p>Generous free tier, no credit card needed</p>
+                </div>
             </div>
         </div>
     </section>
     
     <section id="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Paste</h3>
-                <p>Paste your AI-generated text into the input box</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Humanize</h3>
-                <p>Click "Humanize" — our AI rewrites it in seconds</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Use</h3>
-                <p>Copy the result, check the AI score, publish with confidence</p>
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div>
+                        <h3>Paste</h3>
+                        <p>Paste your AI-generated text into the input box</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div>
+                        <h3>Humanize</h3>
+                        <p>Click "Humanize" — our AI rewrites it in seconds</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div>
+                        <h3>Use</h3>
+                        <p>Copy the result, check the AI score, publish with confidence</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     
     <section id="features">
-        <h2>Everything You Need</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>⚡ Lightning Fast</h3>
-                <p>3-second average processing time. No waiting, no queues.</p>
-            </div>
-            <div class="feature">
-                <h3>✨ Meaning Preserved</h3>
-                <p>Your original message stays intact. Just sounds more natural.</p>
-            </div>
-            <div class="feature">
-                <h3>🔍 AI Detection Score</h3>
-                <p>See before/after AI probability. Know it works before you publish.</p>
-            </div>
-            <div class="feature">
-                <h3>👤 No Registration</h3>
-                <p>Start immediately. No email, no password, no friction.</p>
-            </div>
-            <div class="feature">
-                <h3>🎁 Generous Free Tier</h3>
-                <p>500 words per use, 10 uses per day. Upgrade when ready.</p>
+        <div class="container">
+            <h2>Everything You Need</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Lightning Fast</h3>
+                    <p>3-second average processing time. No waiting, no queues.</p>
+                </div>
+                <div class="feature">
+                    <h3>Meaning Preserved</h3>
+                    <p>Your original message stays intact. Just sounds more natural.</p>
+                </div>
+                <div class="feature">
+                    <h3>AI Detection Score</h3>
+                    <p>See before/after AI probability. Know it works before you publish.</p>
+                </div>
+                <div class="feature">
+                    <h3>No Registration</h3>
+                    <p>Start immediately. No email, no password, no friction.</p>
+                </div>
+                <div class="feature">
+                    <h3>Generous Free Tier</h3>
+                    <p>500 words per use, 10 uses per day. Upgrade when ready.</p>
+                </div>
             </div>
         </div>
     </section>
     
     <section id="pricing">
-        <h2>Simple, Transparent Pricing</h2>
-        <div class="pricing">
-            <div class="pricing-card">
-                <h3>Free</h3>
-                <div class="price">$0</div>
-                <div class="price-period">forever</div>
-                <ul>
-                    <li>500 words per use</li>
-                    <li>10 uses per day</li>
-                    <li>Standard speed</li>
-                    <li>Basic humanization</li>
-                </ul>
-                <button class="btn-secondary">Start Free</button>
-            </div>
-            <div class="pricing-card featured">
-                <h3>Pro</h3>
-                <div class="price">$8.99</div>
-                <div class="price-period">per month</div>
-                <ul>
-                    <li>Unlimited words</li>
-                    <li>Unlimited uses</li>
-                    <li>Priority speed (&lt;2s)</li>
-                    <li>Advanced humanization</li>
-                    <li>History &amp; saved results</li>
-                </ul>
-                <button class="btn-primary">Start Pro Trial</button>
-            </div>
-            <div class="pricing-card">
-                <h3>Team</h3>
-                <div class="price">$24.99</div>
-                <div class="price-period">per month</div>
-                <ul>
-                    <li>Everything in Pro</li>
-                    <li>Up to 5 team members</li>
-                    <li>API access</li>
-                    <li>Bulk processing</li>
-                </ul>
-                <button class="btn-secondary">Contact Us</button>
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">$0</div>
+                    </div>
+                    <div class="price-period">forever</div>
+                    <ul>
+                        <li>500 words per use</li>
+                        <li>10 uses per day</li>
+                        <li>Standard speed</li>
+                        <li>Basic humanization</li>
+                    </ul>
+                    <button class="btn-secondary">Start Free</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">$8.99</div>
+                    </div>
+                    <div class="price-period">per month</div>
+                    <ul>
+                        <li>Unlimited words</li>
+                        <li>Unlimited uses</li>
+                        <li>Priority speed (&lt;2s)</li>
+                        <li>Advanced humanization</li>
+                        <li>History &amp; saved results</li>
+                    </ul>
+                    <button class="btn-primary">Start Pro Trial</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Team</h3>
+                        <div class="price">$24.99</div>
+                    </div>
+                    <div class="price-period">per month</div>
+                    <ul>
+                        <li>Everything in Pro</li>
+                        <li>Up to 5 team members</li>
+                        <li>API access</li>
+                        <li>Bulk processing</li>
+                    </ul>
+                    <button class="btn-secondary">Contact Us</button>
+                </div>
             </div>
         </div>
     </section>
     
     <section id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Is Stealth Writer AI free?</h3>
-                <span class="faq-icon">▼</span>
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Is Stealth Writer AI free?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Our free tier gives you 500 words per use, 10 times per day. No credit card required.</p>
+                </div>
             </div>
-            <div class="faq-answer">
-                <p>Yes! Our free tier gives you 500 words per use, 10 times per day. No credit card required.</p>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>How is this different from QuillBot?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We're specifically designed to bypass AI detectors while preserving meaning. We're also 10x faster — average 3 seconds vs. 30+ seconds.</p>
+                </div>
             </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>How is this different from QuillBot?</h3>
-                <span class="faq-icon">▼</span>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Will my content still make sense?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. Our AI preserves your original meaning, tone, and context. The text just sounds more natural.</p>
+                </div>
             </div>
-            <div class="faq-answer">
-                <p>We're specifically designed to bypass AI detectors while preserving meaning. We're also 10x faster — average 3 seconds vs. 30+ seconds.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Will my content still make sense?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>Absolutely. Our AI preserves your original meaning, tone, and context. The text just sounds more natural.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <h3>Do you store my content?</h3>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                <p>No. Your text is processed in real-time and never stored on our servers.</p>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Do you store my content?</h3>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No. Your text is processed in real-time and never stored on our servers.</p>
+                </div>
             </div>
         </div>
     </section>
     
     <section class="hero">
-        <h2>Start Humanizing Now</h2>
-        <p>Join 10,000+ creators who trust Stealth Writer AI</p>
-        <button class="btn-primary" onclick="document.getElementById('inputText').scrollIntoView({behavior: 'smooth'})">
-            Try It Free — No Signup Required
-        </button>
+        <div class="container">
+            <h2>Start Humanizing Now</h2>
+            <p>Join 10,000+ creators who trust Stealth Writer AI</p>
+            <button class="btn-primary" onclick="document.getElementById('inputText').scrollIntoView({behavior: 'smooth'})">Try It Free — No Signup Required</button>
+        </div>
     </section>
     
     <footer>
-        <p>
+        <div class="container">
             <a href="/privacy">Privacy</a>
             <a href="/terms">Terms</a>
             <a href="/cookie">Cookie</a>
             <a href="/refund">Refund</a>
-        </p>
-        <p>© 2026 Stealth Writer AI. All rights reserved.</p>
+            <p>© 2026 Stealth Writer AI. All rights reserved.</p>
+        </div>
     </footer>
     
     <script>
-        // Word count
         const inputText = document.getElementById('inputText');
-        const wordCount = document.querySelector('.word-count');
+        const wordCount = document.getElementById('wordCount');
         
         inputText.addEventListener('input', function() {
             const words = this.value.trim().split(/\s+/).filter(w => w.length > 0).length;
             wordCount.textContent = words + ' / 500 words';
-            if (words > 500) {
-                wordCount.style.color = 'var(--error)';
-            } else {
-                wordCount.style.color = 'var(--text-secondary)';
-            }
+            wordCount.style.color = words > 500 ? 'var(--error)' : 'var(--ink-light)';
         });
         
-        // Humanize function
         async function humanizeText() {
             const text = inputText.value.trim();
-            if (!text) {
-                showError('Please enter some text to humanize.');
-                return;
-            }
-            
+            if (!text) { showError('Please enter some text to humanize.'); return; }
             const words = text.split(/\s+/).filter(w => w.length > 0).length;
-            if (words > 500) {
-                showError('Free tier limited to 500 words. Please upgrade to Pro.');
-                return;
-            }
+            if (words > 500) { showError('Free tier limited to 500 words. Please upgrade to Pro.'); return; }
             
-            // Show loading
             document.getElementById('loading').classList.add('active');
             document.getElementById('resultArea').classList.remove('active');
             document.getElementById('errorMessage').classList.remove('active');
             document.getElementById('humanizeBtn').disabled = true;
             
             try {
-                // Simulate API call (replace with actual API)
                 await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Mock result
                 const result = "This is a humanized version of your text. It reads more naturally while keeping your original meaning intact.";
-                const aiScore = Math.floor(Math.random() * 15) + 5; // 5-20%
-                
+                const aiScore = Math.floor(Math.random() * 15) + 5;
                 document.getElementById('resultText').textContent = result;
                 const badge = document.getElementById('scoreBadge');
                 badge.textContent = aiScore + '% AI';
                 badge.className = 'score-badge ' + (aiScore < 20 ? 'score-low' : 'score-high');
-                
                 document.getElementById('resultArea').classList.add('active');
-            } catch (error) {
-                showError('Something went wrong. Please try again.');
-            } finally {
+            } catch (error) { showError('Something went wrong. Please try again.'); }
+            finally {
                 document.getElementById('loading').classList.remove('active');
                 document.getElementById('humanizeBtn').disabled = false;
             }
@@ -809,25 +747,17 @@
         }
         
         function copyResult() {
-            const text = document.getElementById('resultText').textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard!');
-            });
+            navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(() => alert('Copied!'));
         }
         
-        // FAQ toggle
         function toggleFaq(element) {
-            const item = element.parentElement;
-            item.classList.toggle('active');
+            element.parentElement.classList.toggle('active');
         }
         
-        // Smooth scroll for nav links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
             });
         });
     </script>
