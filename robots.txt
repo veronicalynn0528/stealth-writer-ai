@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /privacy
+Disallow: /terms
+Disallow: /cookie
+Disallow: /refund
+
+Sitemap: https://stealth-writer-ai.pages.dev/sitemap.xml
