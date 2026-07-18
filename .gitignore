@@ -1,3 +1,11 @@
+
+# secrets & local state
+.env
+.env.*
+.dev.vars
 .wrangler/
-.DS_Store
+!.env.example
 node_modules/
+dist/
+.next/
+.DS_Store

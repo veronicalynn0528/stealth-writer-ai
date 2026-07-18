@@ -1,0 +1,14 @@
+name = "stealth-writer-ai"
+main = "api/humanize.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "stealth-writer-ai"
+
+[[env.production.routes]]
+pattern = "stealthwriter.online/*"
+custom_domain = true
+
+[env.production.vars]
+# Set via wrangler secret put OPENAI_API_KEY
+# Set via wrangler secret put CLAUDE_API_KEY

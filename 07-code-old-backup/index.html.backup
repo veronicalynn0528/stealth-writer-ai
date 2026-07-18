@@ -472,40 +472,6 @@
             body { font-size: 16px; }
         }
     </style>
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Stealth Writer AI",
-        "description": "Free AI humanizer that transforms AI-generated text into natural, human-like content.",
-        "url": "https://stealth-writer-ai.pages.dev/",
-        "applicationCategory": "UtilityApplication",
-        "offers": [
-            {
-                "@type": "Offer",
-                "name": "Free",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            {
-                "@type": "Offer",
-                "name": "Pro",
-                "price": "8.99",
-                "priceCurrency": "USD"
-            }
-        ]
-    }
-    </script>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag("js", new Date());
-        gtag("config", "G-PLACEHOLDER");
-    </script>
 </head>
 <body>
     <nav>
@@ -739,14 +705,6 @@
     
     <script>
         const inputText = document.getElementById('inputText');
-        const emptyState = document.getElementById("emptyState");
-        
-        // Show empty state initially
-        if (inputText.value.trim() === "") {
-            emptyState.style.display = "block";
-        } else {
-            emptyState.style.display = "none";
-        }
         const wordCount = document.getElementById('wordCount');
         
         inputText.addEventListener('input', function() {
@@ -755,12 +713,6 @@
             wordCount.style.color = words > 500 ? 'var(--error)' : 'var(--ink-light)';
         });
         
-        // Analytics event tracking
-        function trackEvent(eventName, params) {
-            if (typeof gtag !== "undefined") {
-                gtag("event", eventName, params);
-            }
-        }
         async function humanizeText() {
             const text = inputText.value.trim();
             if (!text) { showError('Please enter some text to humanize.'); return; }
